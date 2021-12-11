@@ -49,7 +49,7 @@ const compliments = [
     "You notice the giphy in the top right changes on refresh?",
 ];
 setCompliment();
-setImage();
+searchImage();
 setCartoon();
 
 function setCompliment() {
@@ -63,22 +63,28 @@ function getRandomElement(array) {
     return array[rand];
 }
 
-function setImage() {
+function searchImage() {
     const image = document.querySelector("#animal");
     const sources = [
         () => {
             // cats
             const url = "https://api.thecatapi.com/v1/images/search";
-            fetch(url).then(response => response.json()).then(data => image.setAttribute("src", data[0].url));
+            fetch(url).then(response => response.json()).then(data => setImage(image, data[0].url))
+            .catch(error => searchImage());
         },
         () => {
             // dogs
             const url = "https://dog.ceo/api/breeds/image/random";
-            fetch(url).then(response => response.json()).then(data => image.setAttribute("src", data.message));
+            fetch(url).then(response => response.json()).then(data => setImage(image, data.message))
+            .catch(error => searchImage());
         }
     ];
     const fetchAndSetImageURL = getRandomElement(sources);
     fetchAndSetImageURL(); 
+}
+
+function setImage(image, url) {
+    image.setAttribute("src", url);
     resizeImage(image);
 }
 
