@@ -1,14 +1,24 @@
 <!DOCTYPE html>
+<html>
+
 <head>
     <title>Cam's Home</title>
-    <meta charset="utf-8" lang="en-us"/>
-    <link rel="stylesheet" href="style.css"/>
+    <meta charset="utf-8" lang="en-us" />
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
 </head>
+
 <body>
-    <h1>Welcome Home Cutie</h1>
-    <img class="loadingImage" id="animal" alt="There was an error getting your image..."/>
-    <button id="another-image" onclick="searchImage()">Another One!</button>
-    <div id="compliment"></div>
-    <img id="cartoon" alt="Cats are taking over, one sec..."/>
+    <div id="header-bar">
+        <div id="header">
+            <h1>Welcome Home Cutie</h1>
+            <div id="compliment"></div>
+        </div>
+        <img id="cartoon" alt="Cats are taking over, one sec..." />
+    </div>
+    <!-- <img id="animal" alt="The doggo took that image!" /> -->
+    <button onclick="searchImage()">Another One!</button>
+    <button onclick="toggleFullScreen()">Toggle Full</button>
 </body>
+
+</html>

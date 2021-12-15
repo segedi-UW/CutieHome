@@ -64,7 +64,7 @@ function getRandomElement(array) {
 }
 
 function searchImage() {
-    const image = document.querySelector("#animal");
+    const image = document.querySelector("body");
     const sources = [
         () => {
             // cats
@@ -84,25 +84,17 @@ function searchImage() {
 }
 
 function setImage(image, url) {
-    image.setAttribute("src", url);
-    resizeImage(image);
-}
-
-function resizeImage(image) {
-    image.addEventListener("load", () => {
-        w = image.naturalWidth;
-        h = image.naturalHeight;
-        const ar = w / h;
-        h = 400;
-        w = ar * h;
-        image.width = w;
-        image.height = h;
-        image.classList.remove("loadingImage");
-    });
-
+    image.style.backgroundImage = "url('" + url + "')";
 }
 
 function setCartoon() {
     const img = document.querySelector("#cartoon");
     img.setAttribute("src", getRandomElement(gifs));
+}
+
+function toggleFullScreen() {
+    const image = document.body;
+    const size = image.style.backgroundSize;
+    image.style.backgroundSize = size === "contain" ? "cover" : "contain";
+
 }
